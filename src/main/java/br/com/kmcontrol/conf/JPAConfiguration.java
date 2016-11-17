@@ -47,11 +47,18 @@ public class JPAConfiguration {
 	@Bean
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/kmcdb");
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+	    String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	    String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	    String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+	    String databaseName = System.getenv("OPENSHIFT_APP_NAME");
+	    String url = "jdbc:mysql://" + host + ":" + port + "/"+databaseName;
+	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+	    dataSource.setUrl(url);
+	    dataSource.setUsername(username);
+	    dataSource.setPassword(password);
 		return dataSource;
 	}
+	
 	
 }

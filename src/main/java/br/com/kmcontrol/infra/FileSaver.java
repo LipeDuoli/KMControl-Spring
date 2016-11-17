@@ -20,7 +20,7 @@ public class FileSaver {
     public String write(String basePath, MultipartFile file, Atendimento atendimento) {
     	String dataFormatada = new SimpleDateFormat("ddMMyyyy").format(atendimento.getDataAtendimento().getTime());
         try {
-            String realPath = request.getServletContext().getRealPath("/") + basePath;
+            String realPath = System.getenv("OPENSHIFT_DATA_DIR") + basePath;
             File dir = new File(realPath);
             if (!dir.exists()){
             	dir.mkdirs();            	
@@ -36,7 +36,7 @@ public class FileSaver {
     }
     
     public boolean delete(String filePath){
-    	String realPath = request.getServletContext().getRealPath("/");
+    	String realPath = System.getenv("OPENSHIFT_DATA_DIR");
     	File file = new File(realPath + "/" + filePath);
     	if(file.delete()){
     		return true;

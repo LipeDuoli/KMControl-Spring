@@ -179,13 +179,13 @@ public class AtendimentoController {
 	}
 	
 	@RequestMapping(value="/{numeroChamado}/rat", method=RequestMethod.GET)
-	public void downloadRat(@PathVariable("numeroChamado") Long numeroChamado, @AuthenticationPrincipal Usuario usuarioLogado, HttpServletResponse response, HttpServletRequest request) throws IOException{
+	public void downloadRat(@PathVariable("numeroChamado") Long numeroChamado, @AuthenticationPrincipal Usuario usuarioLogado, HttpServletResponse response) throws IOException{
 		ModelAndView view = new ModelAndView();
 		File file = null;
 		try {
 			Atendimento atendimento = atendimentoDao.pesquisaPorChamado(numeroChamado);
 			if(atendimento.pertence(usuarioLogado) || usuarioLogado.hasRole(new Role("ROLE_SUP"))){
-				file = new File(request.getServletContext().getRealPath("/") + atendimento.getRatPath());
+				file = new File(System.getenv("OPENSHIFT_DATA_DIR") + atendimento.getRatPath());
 				String mimeType= URLConnection.guessContentTypeFromName(file.getName());
 		        if(mimeType==null){
 		            System.out.println("mimetype is not detectable, will take default");

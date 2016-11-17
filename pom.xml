@@ -175,7 +175,7 @@
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
           <outputDirectory>webapps</outputDirectory>
-          <warName>kmcontrol</warName>
+          <warName>ROOT</warName>
         </configuration>
       </plugin>
     </plugins>
