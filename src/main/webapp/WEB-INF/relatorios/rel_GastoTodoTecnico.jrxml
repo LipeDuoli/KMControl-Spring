@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioTodosTecnicos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b446508e-9b04-4df5-99e4-5faf6d793c14">
+	<property name="ireport.zoom" value="1.6105100000000012"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DATA_INI" class="java.util.Date"/>
+	<parameter name="DATA_FIM" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     atendimento.`numeroChamado` AS numeroChamado,
+     atendimento.`dataAtendimento` AS dataAtendimento,
+     atendimento.`destino` AS destino,
+     atendimento.`gastoExtra` AS gastoExtra,
+     atendimento.`kmRodado` AS kmRodado,
+     atendimento.`origem` AS origem,
+     usuario.`nome` AS nomeTecnico,
+     usuario.`valorPagoKm` AS valorPagoKm,
+     (atendimento.`kmRodado` * usuario.`valorPagoKm`) AS valorTotalAtendimento
+FROM
+     `Usuario` usuario INNER JOIN `Atendimento` atendimento ON usuario.`id` = atendimento.`usuario_id`
+WHERE
+     dataAtendimento BETWEEN $P{DATA_INI} AND $P{DATA_FIM}
+ORDER BY
+     usuario.`nome` ASC,
+     atendimento.`dataAtendimento` ASC,
+     atendimento.`numeroChamado` ASC]]>
+	</queryString>
+	<field name="numeroChamado" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataAtendimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="destino" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gastoExtra" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kmRodado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="origem" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeTecnico" class="java.lang.String"/>
+	<field name="valorPagoKm" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorTotalAtendimento" class="java.math.BigDecimal"/>
+	<variable name="kmRodado_1" class="java.lang.Integer" resetType="Group" resetGroup="porTecnico" calculation="Sum">
+		<variableExpression><![CDATA[$F{kmRodado}]]></variableExpression>
+	</variable>
+	<variable name="valorPagoKm_1" class="java.math.BigDecimal" resetType="Group" resetGroup="porTecnico" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorPagoKm}]]></variableExpression>
+	</variable>
+	<variable name="gastoExtra_1" class="java.math.BigDecimal" resetType="Group" resetGroup="porTecnico" calculation="Sum">
+		<variableExpression><![CDATA[$F{gastoExtra}]]></variableExpression>
+	</variable>
+	<variable name="valorPagoKm_2" class="java.math.BigDecimal" resetType="Group" resetGroup="porTecnico" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorPagoKm}]]></variableExpression>
+	</variable>
+	<variable name="valorTotalAtendimento_1" class="java.math.BigDecimal" resetType="Group" resetGroup="porTecnico" calculation="Sum">
+		<variableExpression><![CDATA[$F{valorTotalAtendimento}]]></variableExpression>
+	</variable>
+	<group name="porTecnico" isStartNewPage="true" isResetPageNumber="true">
+		<groupExpression><![CDATA[$F{nomeTecnico}]]></groupExpression>
+		<groupHeader>
+			<band height="53">
+				<rectangle>
+					<reportElement x="0" y="23" width="555" height="30" backcolor="#CCCCCC" uuid="130c09c6-f25f-459c-9f9a-8fd5ea638a9d"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="23" width="84" height="30" uuid="698ea1ea-ce28-444b-8834-e2a3d7e506d4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Chamado Nº]]></text>
+				</staticText>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="83" y="23" width="75" height="30" isPrintWhenDetailOverflows="true" uuid="03d5b04a-24af-4dbc-883e-f2f51d7f6d81"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[ Data
+ Atendimento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="158" y="23" width="164" height="30" uuid="bf6b9137-1e7b-4a4d-a377-6f14689be6f6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ Origem]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="322" y="23" width="163" height="30" uuid="f5897663-3981-4970-bf22-cdd2f1fb7eac"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ Destino]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="485" y="23" width="70" height="30" uuid="0e54bd1a-5e0e-4418-9529-17bd93cae730"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ Km Rodado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="32" height="15" uuid="2f964466-af60-44f1-a3e4-0e37629ebff8"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nome:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="32" y="0" width="120" height="15" uuid="84f2c2b7-5387-462f-8306-7afb170dc094"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomeTecnico}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00" isBlankWhenNull="false">
+					<reportElement x="497" y="0" width="58" height="15" uuid="bda483d8-990e-46cc-96a4-f613a94ae210"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{valorPagoKm}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="409" y="0" width="88" height="15" uuid="4062abf5-8681-4070-9f57-6fcdac5fdd64"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor por KM: ]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="60">
+				<rectangle>
+					<reportElement x="0" y="40" width="555" height="19" backcolor="#CCCCCC" uuid="d1655bdc-f35f-4012-97af-c1bfbb4d07f0"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+				<textField pattern="#,##0Km">
+					<reportElement x="485" y="0" width="70" height="20" uuid="da6ad496-367b-4ea9-8b4a-8f1141832d6a"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{kmRodado_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement x="485" y="20" width="70" height="20" uuid="96575e72-2774-458f-b1fd-938c40448bb2"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{gastoExtra_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement x="485" y="38" width="70" height="20" uuid="af2c7f9a-004f-4234-bc3c-f22228ff67c4"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{valorTotalAtendimento_1}.add( $V{gastoExtra_1} )]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="322" y="0" width="163" height="20" uuid="5e72876d-ec87-43d6-a2a0-e8eb307d0759"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Rodado:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="322" y="20" width="163" height="20" uuid="fcc9d5a9-9248-453a-8742-13d853de826b"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total de gastos Extras:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="322" y="38" width="163" height="20" uuid="9e1553d6-d214-4f44-bf49-fec33b70fb7d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor Total:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="30">
+			<staticText>
+				<reportElement x="0" y="0" width="177" height="25" uuid="e5880e7c-fd87-4022-a318-70717b5dde12"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KM'control]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="0" width="278" height="25" uuid="316cea86-2fac-44cc-84af-ff73a7927669"/>
+				<textElement verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Relatório de gasto]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="0" y="0" width="84" height="20" uuid="661e1633-894a-4673-9afc-8ddfd65b8af3"/>
+				<box leftPadding="2" rightPadding="2">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numeroChamado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="83" y="0" width="75" height="20" uuid="6d656242-bd85-496c-9401-93f1de218e8a"/>
+				<box leftPadding="2" rightPadding="2">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dataAtendimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="0" width="164" height="20" uuid="4e1baec9-212b-434e-8e13-63ab4f003b49"/>
+				<box leftPadding="2" rightPadding="2">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{origem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="163" height="20" uuid="c002062d-eed7-4e53-9643-c5b8c7e0a13f"/>
+				<box leftPadding="2" rightPadding="2">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{destino}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="485" y="0" width="70" height="20" uuid="40e3ccd6-f9b3-441e-8cbb-8657dbf92c2e"/>
+				<box leftPadding="2" rightPadding="2">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kmRodado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="189" height="20" uuid="f4d78767-fead-4107-88f7-b962f508f721"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" uuid="a9fc077c-21a4-4860-bd2e-99fd63ad5a00"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="30061a81-e4dd-417e-84b4-9cbf31cf39fe"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

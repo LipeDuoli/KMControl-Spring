@@ -1,0 +1,304 @@
+body {
+  margin: 0;
+}
+
+a img{
+  border: 0px;
+}
+
+.search-box .mdl-textfield__input {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.header .mdl-menu__container {
+  z-index: 50;
+  margin: 0 !important;
+}
+
+.mdl-textfield--expandable {
+  width: auto;
+}
+
+.mobile-title {
+  display: none !important;
+}
+
+.logo-image {
+  width: 250px;
+}
+
+.header {
+  overflow: visible;
+  background-color: white;
+}
+
+.header .material-icons {
+	color: #767777 !important;
+}
+
+.header .mdl-layout__drawer-button {
+	background: transparent;
+	color: #767777;
+}
+
+.header .mdl-navigation__link {
+	color: #757575;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.navigation-container {
+/* Simple hack to make the overflow happen to the left instead... */
+direction: rtl;
+-webkit-box-ordinal-group: 2;
+-webkit-order: 1;
+    -ms-flex-order: 1;
+        order: 1;
+width: 500px;
+-webkit-transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation {
+/* ... and now make sure the content is actually LTR */
+direction: ltr;
+-webkit-box-pack: end;
+-webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+width: 800px;
+}
+
+.search-box.is-focused + .navigation-container {
+	opacity: 0;
+	width: 100px;
+}
+
+.navigation .mdl-navigation__link {
+	display: inline-block;
+	height: 60px;
+	line-height: 68px;
+	background-color: transparent !important;
+	border-bottom: 4px solid transparent;
+}
+
+.navigation .mdl-navigation__link:hover {
+  border-bottom: 4px solid #2196F3;
+}
+
+.search-box {
+-webkit-box-ordinal-group: 3;
+-webkit-order: 2;
+    -ms-flex-order: 2;
+        order: 2;
+margin-left: 16px;
+margin-right: 16px;
+}
+
+.more-button {
+-webkit-box-ordinal-group: 4;
+-webkit-order: 3;
+    -ms-flex-order: 3;
+        order: 3;
+}
+
+.mdl-layout-title {
+	position: relative;
+}
+
+.drawer .logo-image {
+  position: absolute;
+  bottom: 16px;
+}
+
+.more-button {
+	display: none;
+}
+
+
+.content {
+    border-radius: 2px;
+    padding: 1rem 2rem;
+}
+.error_cadastro {
+    color: #DE3226;
+    position: absolute;
+    font-size: 12px;
+    margin-top: 3px;
+    display: block;
+}
+
+.index_card_space {
+	padding-top: 3em;
+}
+.index_logo{
+	margin: 0px auto;
+	padding-top: 8em;
+}
+.index_card {
+	width: 330px;
+	margin: 0px auto;
+}
+.index_card_actions {
+	display: flex;
+}
+
+.filtro_atendimento {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.filtro_atendimento h6 {
+	display: inline;
+	padding-right: 5px;
+}
+
+.page-content{
+	padding-bottom: 6em;
+}
+
+.tabela_atendimentos {
+	width: 100%;
+}
+
+.tabela_atendimentos .numero_chamado {
+	width: 15em;
+}
+
+.tabela_atendimentos .data_atendimento {
+	width: 15em;
+}
+
+.tabela_atendimentos .origem {
+	width: 35em;
+}
+
+.tabela_atendimentos .destino {
+	width: 35em;
+}
+
+.tabela_atendimentos .km_rodado {
+	width: 11em;
+}
+
+.tabela_atendimentos .acoes {
+	width: 13em;
+}
+
+.snackbar {
+  background-color: #323232;
+  color: #FFFFFF;
+  font-size: 14px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  height: 0;
+  -moz-transition: -moz-transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0s linear 0.2s, padding 0s linear 0.2s, height 0s linear 0.2s;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0s linear 0.2s, padding 0s linear 0.2s, height 0s linear 0.2s;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0s linear 0.2s, padding 0s linear 0.2s, height 0s linear 0.2s;
+  -moz-transform: translateY(200%);
+  -webkit-transform: translateY(200%);
+  transform: translateY(200%);
+}
+.snackbar.snackbar-opened {
+  padding: 14px 15px;
+  margin-bottom: 20px;
+  height: auto;
+  -moz-transition: -moz-transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0s linear 0.2s;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0s linear 0.2s;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in, height 0s linear 0.2s, height 0s linear 0.2s;
+  -moz-transform: none;
+  -webkit-transform: none;
+  transform: none;
+}
+.snackbar.toast {
+  border-radius: 200px;
+}
+
+.account_button{
+	order:2;
+}
+
+.fab {
+	position: fixed;
+	display: inline-block;
+	right: 24px;
+	bottom: 24px;
+	z-index: 2;
+}
+
+.mdl-selectfield{position:relative;font-size:16px;display:inline-block;box-sizing:border-box;width:300px;max-width:100%;margin:0;padding:20px 0}.mdl-selectfield--align-right{text-align:right}.mdl-selectfield--full-width{width:100%}.mdl-selectfield__select{display:block;width:100%;padding:4px 0;margin:0;color:inherit;background:transparent;font-size:16px;text-align:left;color:inherit;border:none;border-bottom:1px solid rgba(0,0,0, 0.12);border-radius:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}.mdl-selectfield.is-focused .mdl-selectfield__select{outline:none}.mdl-selectfield.is-invalid .mdl-selectfield__select{border-color:rgb(222, 50, 38);box-shadow:none}fieldset[disabled] .mdl-selectfield .mdl-selectfield__select,.mdl-selectfield.is-disabled .mdl-selectfield__select{background-color:transparent;border-bottom:1px dotted rgba(0,0,0, 0.12);color:rgba(0,0,0, 0.26)}.mdl-selectfield__label{bottom:0;color:rgba(0,0,0, 0.26);font-size:16px;left:0;right:0;pointer-events:none;position:absolute;display:block;top:24px;width:100%;overflow:hidden;white-space:nowrap;text-align:left}.mdl-selectfield.is-dirty .mdl-selectfield__label{visibility:hidden}.mdl-selectfield--floating-label .mdl-selectfield__label{transition-duration:0.2s;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1)}fieldset[disabled] .mdl-selectfield .mdl-selectfield__label,.mdl-selectfield.is-disabled.is-disabled .mdl-selectfield__label{color:rgba(0,0,0, 0.26)}.mdl-selectfield--floating-label.is-focused .mdl-selectfield__label,.mdl-selectfield--floating-label.is-dirty .mdl-selectfield__label{color:#2196F3;font-size:12px;top:4px;visibility:visible}.mdl-selectfield--floating-label.is-invalid .mdl-selectfield__label{color:rgb(222, 50, 38);font-size:12px}.mdl-selectfield__label:after{background-color:#2196F3;bottom:20px;content:'';height:2px;left:45%;position:absolute;transition-duration:0.2s;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);visibility:hidden;width:10px}.mdl-selectfield.is-focused .mdl-selectfield__label:after{left:0;visibility:visible;width:100%}.mdl-selectfield.is-invalid .mdl-selectfield__label:after{background-color:rgb(222, 50, 38)}.mdl-selectfield__error{color:rgb(222, 50, 38);position:absolute;font-size:12px;margin-top:3px;visibility:hidden;display:block}.mdl-selectfield.is-invalid .mdl-selectfield__error{visibility:visible}
+
+
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+
+	.index_logo{
+		padding-top: 2em;
+	}
+  
+	.navigation-container {
+		display: none;
+	}
+
+	.title {
+		display: none !important;
+	}
+
+	.mobile-title {
+		display: block !important;
+		position: absolute;
+		left: calc(50% - 170px);
+		top: 12px;
+		-webkit-transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+		        transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.logo-image {
+		width: 200px;
+	}
+
+	/* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
+	 consecutive "+" operators in some cases. Therefore, we need to use both
+	 here to cover all the bases. */
+	.search-box.is-focused ~ .mobile-title,
+	.search-box.is-focused + .navigation-container + .mobile-title {
+		opacity: 0;
+	}
+
+	.search-box.is-focused {
+		width: calc(100% - 48px);
+	}
+
+	.search-box .mdl-textfield__expandable-holder {
+		width: 100%;
+	}
+
+	.more-button {
+		display: inline-block;
+	}
+
+	.account_button{
+		margin-right: 16px;
+	}
+
+	.filtro_atendimento {
+		display: block;
+		text-align: center;
+	}
+
+	.filtro_atendimento h6 {
+		display: block;
+	}
+
+	.filtro_atendimento button {
+		display: block;
+	}
+	
+	.page-content{
+		overflow-x: auto;
+	}
+	
+}
